@@ -5,7 +5,7 @@
 {% block body %}
     <h1>Create new Dish</h1>
 
-    {{ include('dish/_form.html.twig') }}
+    {{ include('admin/dish/_form.html.twig') }}
 
-    <a href="{{ path('dish_index') }}">back to list</a>
+    <a href="{{ path('admin_dish_index') }}">back to list</a>
 {% endblock %}
