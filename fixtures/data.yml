@@ -27,15 +27,13 @@ App\Entity\Dish:
     name: "<word()>"
     description: "<sentence(5)>"
     price: "<randomFloat(1, 8.5, 14.5)>"
-    image: "<imageUrl(640, 480, 'pizza')>"
+    image: "<imageUrl(640, 480, 'pate')>"
     type: "pâtes"
-    ingredients: "<numberBetween(2, 4)>x @ingredient_*"
+    ingredients: "<numberBetween(2, 4)>x @ingredient_aleatoire_*"
   plat_{1..7}:
     name: "<word()>"
     description: "<sentence(5)>"
     price: "<randomFloat(1, 8.5, 14.5)>"
-    image: "<imageUrl(640, 480, 'pizza')>"
+    image: "<imageUrl(640, 480, 'plat')>"
     type: "autre"
     ingredients: "<numberBetween(3, 7)>x @ingredient_*"
-  
-
