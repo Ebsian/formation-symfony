@@ -9,3 +9,6 @@ dans l'url, ajouter "1s" entre  "github" et ".com"
 3. form
 4. controller
 5. twig
+
+## Fixtures :
+CDM : "$ composer require hautelook/alice-bundle"
