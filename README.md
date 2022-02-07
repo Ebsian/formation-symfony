@@ -1,6 +1,6 @@
 # Formation Symfony 6
 
-## Pour créer un projet partager sur github
+## Pour créer un projet partagé sur github
 1. Création projet syfmony (symfony new --webapp nompojet)
 2. Cliquer sur contrôle de source
 3. Donner l'url github
