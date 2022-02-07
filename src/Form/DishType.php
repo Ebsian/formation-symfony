@@ -3,7 +3,13 @@
 namespace App\Form;
 
 use App\Entity\Dish;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -12,12 +18,31 @@ class DishType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name')
-            ->add('description')
-            ->add('price')
-            ->add('image')
-            ->add('type')
-            ->add('ingredients')
+            ->add('name', TextType::class, [
+                'label' => 'Nom :',
+            ])
+            ->add('description', TextareaType::class, [
+                'label' => 'Description :',
+            ])
+            ->add('price', MoneyType::class, [
+                'label' => 'Prix :',
+            ])
+            ->add('image', UrlType::class, [
+                'label' => 'Url de l\'image',
+            ])
+            ->add('type', TextType::class, [
+                'label' => 'Type de plat',
+            ])
+            ->add('ingredients', EntityType::class, [
+                'label' => 'Ingredients',
+                'class' => Ingredient::class,
+                'choice_label' => 'name',
+                'multiple' => true,
+                'expanded' => true,
+            ])
+            ->add('submit', SubmitType::class, [
+                'label' => 'Enregistrer',
+            ])
         ;
     }
 
