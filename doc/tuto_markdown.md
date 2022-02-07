@@ -24,3 +24,4 @@ _italic_
 - pour du plusiseurs lignes de code (en le spécifiant) :
 ```php
 $this->test();
+```
