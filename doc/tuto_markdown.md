@@ -14,8 +14,8 @@ _italic_
 
 ### Pour mettre un lien :
 
-- lien vers une page = [ceci est un lien](https://symfony.com/releases/6.0)
-- une image = ![ceci est un image](https://symfony.com/images/logos/header-logo.svg)
+- lien vers une page = [utilisation du format markdown](https://www.markdownguide.org/cheat-sheet/)
+- une image = ![icone markdown](https://d33wubrfki0l68.cloudfront.net/f1f475a6fda1c2c4be4cac04033db5c3293032b4/513a4/assets/images/markdown-mark-white.svg)
 
 
 ### pour du code :
