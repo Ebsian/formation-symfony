@@ -1,7 +1,7 @@
 # Formation Symfony 6
 
 ## Pour créer un projet
-1. Création projet syfmony (symfony new --webapp nompojet)
+1. Création projet syfmony (symfony new --webapp nomprojet)
 2. Cliquer sur contrôle de source
 3. Donner l'url github
 4. Donner un nom à la branche (origin)
