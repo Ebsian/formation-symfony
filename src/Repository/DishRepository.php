@@ -19,6 +19,59 @@ class DishRepository extends ServiceEntityRepository
         parent::__construct($registry, Dish::class);
     }
 
+    public function findAllOrderedByPrice (): array
+    {
+        return $this
+            ->createQueryBuilder('dish')
+            ->orderBy('dish.price', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+    
+    public function findAllTypePizza () : array
+    {
+        return $this
+            ->createQueryBuilder('dish')
+            ->andWhere('dish.type LIKE :like')
+            ->setParameter('like', 'pizza')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findFiveOrderedName () : array
+    {
+        return $this
+            ->createQueryBuilder('dish')
+            ->orderBy('dish.name', 'ASC')
+            ->setMaxResults(5)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findTenOfPageTwoOrderedByPrice () : array
+    {
+        return $this
+            ->createQueryBuilder('dish')
+            ->orderBy('dish.price', 'DESC')
+            ->setMaxResults(10)
+            ->setFirstResult(11)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findByTomato () : array
+    {
+        return $this
+            ->createQueryBuilder('dish')
+            ->setMaxResults(15)
+            ->leftJoin('dish.ingredients', 'ingredient')
+            ->andWhere('ingredient.name = :ingredientName')
+            ->setParameter('ingredientName', 'tomate')
+            ->getQuery()
+            ->getResult();
+    }
+
+
     // /**
     //  * @return Dish[] Returns an array of Dish objects
     //  */

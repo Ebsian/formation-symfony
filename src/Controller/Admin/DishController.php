@@ -18,7 +18,7 @@ class DishController extends AbstractController
     public function index(DishRepository $dishRepository): Response
     {
         return $this->render('admin/dish/index.html.twig', [
-            'dishes' => $dishRepository->findAll(),
+            'dishes' => $dishRepository->findByTomato(),
         ]);
     }
 
