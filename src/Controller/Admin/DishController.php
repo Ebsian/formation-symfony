@@ -17,14 +17,14 @@ use Symfony\Component\Routing\Annotation\Route;
 class DishController extends AbstractController
 {
     #[Route('/', name: 'admin_dish_index', methods: ['GET'])]
-    public function index(DishRepository $dishRepository): Response
+    public function index(DishRepository $dishRepository, Request $request): Response
     {
         // création DTO
         $criteria = new SearchDishCriteria();
 
         $form = $this
             ->createForm(SearchDishType::class, $criteria)
-            ->handleRequest();
+            ->handleRequest($request);
 
         return $this->render('admin/dish/index.html.twig', [
             'dishes' => $dishRepository->findByCriteria($criteria),

@@ -20,7 +20,7 @@ class DishRepository extends ServiceEntityRepository
         parent::__construct($registry, Dish::class);
     }
 
-    public function findByCriteria(SearchDishCriteria $criteria) 
+    public function findByCriteria(SearchDishCriteria $criteria) : array 
     {
         $queryBuilder = $this->createQueryBuilder('dish');
 
@@ -30,9 +30,9 @@ class DishRepository extends ServiceEntityRepository
                 ->setParameter('title', '%'. $criteria->title . '%');
         }
         
-        return $this
+        return $queryBuilder
             ->setMaxResults($criteria->limit)
-            ->setFirstResult($criteria->limit * ($criteria->page -1))
+            ->setFirstResult($criteria->limit * ($criteria->page - 1))
             ->getQuery()
             ->getResult();
     }
