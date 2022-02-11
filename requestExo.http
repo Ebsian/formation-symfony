@@ -1,0 +1,74 @@
+GET https://google.fr
+
+###
+GET http://localhost:4444/admin/dish
+
+###
+GET http://localhost:4444/dishes
+
+###
+POST http://localhost:444/admin/dishes
+Content-Type: application/json
+
+{
+    "name": "Pizza Yellow",
+    "price": 11.5,
+    "description": "Doggo ipsum wow very biscit big ol pupper wrinkler, super chub"
+}
+
+
+###
+### Exercice requêtes :
+###
+
+### 1. J'aimerais récupérer tout les ingrédients
+GET http://localhost:4444/ingredients
+    # -> collection
+
+### 2. J'aimerais récupérer l'utilisateur avec l'id 4
+GET http://localhost:4444/users/4
+    # -> document
+
+### 3. J'aimerais supprimer le plat avec l'id 2
+DELETE http://localhost:4444/dishes/2
+    # -> rien ou document
+
+DELETE http://localhost:444/dishe?id=2 
+    # -> collection
+
+### 4. J'aimerais créer un nouveau plat
+POST http://localhost:4444/dishes
+    # -> document ou rien (mais très rare !)
+
+### 5. J'aimerais modifier l'ingredient avec l'id 8
+PUT http://localhost:4444/ingredients/8
+PATCH  http://localhost:4444/ingredients/8
+    # -> document
+
+PUT http://localhost:4444/ingredients?id=8
+PATCH  http://localhost:4444/ingredients?id=8
+    # -> collection
+
+### 6. J'aimerais récupérer les ingrédients du plat avec l'id 9
+GET http://localhost:4444/dishes/9/ingredients
+GET http://localhost:4444/ingredients?dishes=[9]
+    # -> collection
+
+### 7. J'aimerais récupérer tout les plats dont le nom contient "Pizza"
+GET http://localhost:4444/dishes?name=%pizza% 
+    # -> collection
+
+### 8. J'aimerais ajouter un ingrédient au plat avec l'id 2
+PATCH http://localhost:4444/dishes/2/ingredients
+PUT http://localhost:4444/dishes/2/ingredients
+    # -> collection
+PATCH http://localhost:4444/dishes/2
+PUT http://localhost:4444/dishes/2
+    # -> document
+POST http://localhost:4444/dishes/2/ingredients (créer & ajouter)
+    # -> document ou collection
+
+### 9. J'aimerais récupérer tout les plats ordonées par prix croissant et limiter à 4 résultats
+GET http://localhost:4444/dishes?order=+price&limit=4
+GET http://localhost:4444/dishes?order=price-asc&limit=4
+    # -> collection

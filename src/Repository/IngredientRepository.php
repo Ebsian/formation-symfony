@@ -3,8 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Ingredient;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use App\DTO\SearchIngredientCriteria;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method Ingredient|null find($id, $lockMode = null, $lockVersion = null)
@@ -19,6 +20,23 @@ class IngredientRepository extends ServiceEntityRepository
         parent::__construct($registry, Ingredient::class);
     }
 
+
+    public function findByCriteria(SearchIngredientCriteria $criteria) : array 
+    {
+        $queryBuilder = $this->createQueryBuilder('ingr');
+
+        if ($criteria->title) {
+            $queryBuilder
+                ->andWhere('ingr.name LIKE :title')
+                ->setParameter('title', '%'. $criteria->title . '%');
+        }
+        
+        return $queryBuilder
+            ->setMaxResults($criteria->limit)
+            ->getQuery()
+            ->getResult();
+    }
+    
     // /**
     //  * @return Ingredient[] Returns an array of Ingredient objects
     //  */
